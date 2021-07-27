@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Error404 from './components/error/Error404';
+import Home from './components/querys/Home.jsx';
+import { HeaderComponent } from './components/header/Header.jsx';
+import Settings from './components/settings/Settings.jsx';
+import MultiStepForm from './components/forms/MultiStepForm';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <Fragment>
+      <HeaderComponent/> 
+
+      <Fragment>
+
+        <Switch>
+          <Route exact = {true} path = '/' component = {Home} />
+          <Route path = '/new-register' component = {MultiStepForm} />
+          <Route path = '/settings' component = {Settings} />
+          <Route component = {Error404}/>
+        </Switch>
+
+      </Fragment>
+
+    </Fragment>
+    
   );
 }
 
